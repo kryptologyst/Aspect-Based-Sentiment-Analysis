@@ -1,0 +1,54 @@
+# Configuration file for Aspect-Based Sentiment Analysis
+
+# Model Configuration
+model:
+  name: "cardiffnlp/twitter-roberta-base-sentiment-latest"
+  device: "auto"  # auto, cpu, cuda
+  max_length: 512
+  batch_size: 16
+
+# Aspect Configuration
+aspects:
+  restaurant:
+    - food
+    - service
+    - ambiance
+    - price
+  ecommerce:
+    - product_quality
+    - delivery
+    - customer_service
+    - price
+  general:
+    - quality
+    - price
+    - service
+    - delivery
+
+# Analysis Configuration
+analysis:
+  context_window: 50
+  confidence_threshold: 0.5
+  auto_detect_aspects: true
+
+# Dataset Configuration
+dataset:
+  synthetic_size: 1000
+  domains: ["restaurant", "ecommerce"]
+  sentiment_distribution:
+    positive: 0.4
+    negative: 0.3
+    neutral: 0.3
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/aspect_sentiment.log"
+
+# Web Interface Configuration
+web_app:
+  title: "Aspect-Based Sentiment Analysis"
+  page_icon: "📊"
+  layout: "wide"
+  theme: "light"
